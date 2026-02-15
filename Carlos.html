@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Carlos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        vintage: ['"Libre Baskerville"', 'serif']
+                    },
+                    colors: {
+                        black: "#0b0b0b",
+                        grayDark: "#1a1a1a",
+                        gray: "#5a5a5a",
+                        grayLight: "#c9c9c9",
+                        offWhite: "#e4e4e4",
+                        softWhite: "#f5f5f5"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Libre Baskerville', serif;
+            overflow: hidden;
+        }
+        .menu-gradient {
+            background: linear-gradient( to bottom, rgba(235,235,235,0.96), rgba(220,220,220,0.96) );
+        }
+        .hero-overlay {
+            background: radial-gradient( circle at center, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.30) 55%, rgba(0,0,0,0.65) 80%, rgba(0,0,0,0.90) 100% );
+        }
+        .hero-text {
+            text-shadow: 0 3px 14px rgba(0,0,0,0.65);
+        }
+        .flash {
+            position: fixed;
+            inset: 0;
+            background: #f2f2f2;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 100;
+        }
+            .flash.active {
+                animation: cameraFlash 0.9s ease-out forwards;
+            }
+        @keyframes cameraFlash {
+            0% {
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.65;
+            }
+            45% {
+                opacity: 0.65;
+            }
+            70% {
+                opacity: 0.35;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        .img-start {
+            transform: translateX(50%) scale(1.5) translateY(20px);
+        }
+        .img-final {
+            transform: translateX(0) scale(1.5) translateY(20px);
+            transition: transform 1.6s ease;
+        }
+        .text-hidden {
+            opacity: 0;
+            transform: translateX(40px);
+        }
+        .text-show {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 1.2s ease;
+        }
+        .vintage-section {
+            background: linear-gradient( to right, rgba(255,255,255,0.02), rgba(0,0,0,0.02) );
+        }
+        .footer-gradient {
+            background: linear-gradient(to top, #0b0b0b, #161616);
+        }
+    </style>
+</head>
+
+<body class="bg-offWhite text-gray font-light">
+
+    <div id="flash" class="flash"></div>
+
+    <header class="fixed top-0 left-0 right-0 z-50 menu-gradient">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="Index.html" class="text-black text-lg font-bold tracking-widest">
+                Carlos
+            </a>
+            <nav class="space-x-8 hidden md:block">
+                <a href="Index.html" class="text-black hover:text-gray">Início</a>
+                <a href="Victoria.html" class="text-black hover:text-gray">Victória</a>
+                <a href="Carlos.html" class="text-black hover:text-gray">Carlos</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative min-h-[80vh] flex items-center overflow-hidden">
+        <div class="absolute inset-0 hero-overlay"></div>
+        <div class="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center w-full hero-text">
+            <div class="relative h-[60vh] md:h-[70vh]">
+                <img id="heroImg"
+                     src="carloanime.png"
+                     alt="Carlos"
+                     class="absolute inset-0 w-full h-full object-contain img-start">
+            </div>
+            <div id="heroText" class="text-softWhite text-hidden">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    Carlos
+                </h1>
+                <p class="leading-loose text-lg opacity-90">
+                    Produção audiovisual com foco em narrativa,
+                    ritmo e estética. Cada projeto é pensado como
+                    uma experiência visual única, conectando imagem,
+                    som e emoção.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-grayDark text-offWhite py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12">Portfólio</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="h-64 bg-gray rounded"></div>
+                <div class="h-64 bg-grayLight rounded"></div>
+                <div class="h-64 bg-gray rounded"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 vintage-section">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-black mb-12">Serviços</h2>
+            <ul class="space-y-8 text-lg">
+                <li class="flex gap-4"><i class="fas fa-video"></i> Produção de vídeo</li>
+                <li class="flex gap-4"><i class="fas fa-cut"></i> Edição e pós-produção</li>
+                <li class="flex gap-4"><i class="fas fa-bullhorn"></i> Conteúdo digital</li>
+                <li class="flex gap-4"><i class="fas fa-music"></i> Videoclipes</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="bg-grayDark text-offWhite py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12">Clientes & Colaborações</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="h-20 flex items-center justify-center border border-gray rounded opacity-70">Marca</div>
+                <div class="h-20 flex items-center justify-center border border-gray rounded opacity-70">Estúdio</div>
+                <div class="h-20 flex items-center justify-center border border-gray rounded opacity-70">Artista</div>
+                <div class="h-20 flex items-center justify-center border border-gray rounded opacity-70">Produtora</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-gradient text-grayLight py-14 px-6 text-center">
+        <p class="text-xs opacity-50">© 2026 V&amp;C</p>
+    </footer>
+
+    <script>
+        window.onload = () => {
+            const flash = document.getElementById("flash");
+            const img = document.getElementById("heroImg");
+            const text = document.getElementById("heroText");
+            flash.classList.add("active");
+            setTimeout(() => {
+                img.classList.add("img-final");
+            }, 900);
+            setTimeout(() => {
+                text.classList.remove("text-hidden");
+                text.classList.add("text-show");
+            }, 1400);
+            setTimeout(() => {
+                document.body.style.overflow = "auto";
+            }, 2400);
+        };
+    </script>
+
+</body>
+</html>

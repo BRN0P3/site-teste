@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Início</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        vintage: ['"Libre Baskerville"', 'serif']
+                    },
+                    colors: {
+                        black: "#0b0b0b",
+                        grayDark: "#1a1a1a",
+                        gray: "#5a5a5a",
+                        grayLight: "#c9c9c9",
+                        offWhite: "#eaeaea",
+                        softWhite: "#f5f5f5"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        .hero-overlay {
+            background: radial-gradient( circle at center, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.30) 60%, rgba(0,0,0,0.75) 100% );
+        }
+
+        .hero-text {
+            text-shadow: 0 3px 14px rgba(0,0,0,0.65);
+        }
+
+        .blurred {
+            filter: blur(18px);
+            pointer-events: none;
+            user-select: none;
+            transition: filter 1.2s ease;
+        }
+
+        .unblurred {
+            filter: blur(0);
+            pointer-events: auto;
+            user-select: auto;
+        }
+    </style>
+</head>
+
+<body class="text-gray font-light bg-offWhite">
+
+    <section class="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden">
+
+        <img src="osdois.png"
+             alt="Imagem inicial"
+             class="absolute inset-0 w-full h-full object-contain scale-150 translate-y-20">
+        <div class="absolute inset-0 hero-overlay"></div>
+        <div class="relative z-10 hero-text flex flex-col items-center gap-12">
+            <h1 class="text-6xl md:text-7xl font-bold tracking-tight text-softWhite">
+                V&amp;C
+            </h1>
+            <button id="btnAcessar"
+                    onclick="liberarSite()"
+                    class="px-12 py-4 bg-softWhite text-black
+                           tracking-widest uppercase text-sm
+                           hover:bg-grayLight transition duration-300">
+                Acessar
+            </button>
+        </div>
+    </section>
+
+    <div id="conteudo" class="blurred">
+        <header class="sticky top-0 z-40 bg-offWhite border-b border-grayLight">
+            <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+                <span class="text-black text-lg font-bold tracking-widest">V&amp;C</span>
+                <nav class="space-x-8 hidden md:block">
+                    <a href="Index.html" class="text-black hover:text-gray">Início</a>
+                    <a href="Victoria.html" class="text-black hover:text-gray">Victória</a>
+                    <a href="Carlos.html" class="text-black hover:text-gray">Carlos</a>
+                </nav>
+            </div>
+        </header>
+        <section id="inicioConteudo" class="py-28 px-6">
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-black mb-6">Quem somos?</h2>
+                    <p class="leading-loose">
+                        Projeto audiovisual focado em narrativa, estética e identidade visual.
+                        Cada trabalho é pensado como uma experiência sensorial.
+                    </p>
+                </div>
+                <div class="h-80 bg-grayLight rounded-lg"></div>
+            </div>
+        </section>
+        <section class="bg-grayDark text-softWhite py-28 px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-12">Fotografia</h2>
+
+                <ul class="space-y-10 text-lg">
+                    <li class="flex items-start space-x-4">
+                        <i class="fas fa-camera mt-1"></i>
+                        <span>Fotografia autoral com foco em composição e atmosfera.</span>
+                    </li>
+                    <li class="flex items-start space-x-4">
+                        <i class="fas fa-film mt-1"></i>
+                        <span>Linguagem cinematográfica e narrativa visual.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="py-28 px-6">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="h-72 bg-grayLight rounded"></div>
+                <div class="h-72 bg-gray rounded"></div>
+                <div class="h-72 bg-grayDark rounded"></div>
+            </div>
+        </section>
+        <footer class="bg-black text-grayLight py-16 text-center">
+            <h3 class="font-bold mb-2">V&amp;C</h3>
+            <p class="text-xs opacity-50">© 2026 V&amp;C</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function liberarSite() {
+            const conteudo = document.getElementById("conteudo");
+            const botao = document.getElementById("btnAcessar");
+            const alvo = document.getElementById("inicioConteudo");
+            conteudo.classList.remove("blurred");
+            conteudo.classList.add("unblurred");
+            botao.style.opacity = "0";
+            botao.style.pointerEvents = "none";
+            setTimeout(() => {
+                botao.remove();
+                alvo.scrollIntoView({ behavior: "smooth" });
+            }, 400);
+        }
+    </script>
+
+</body>
+</html>
